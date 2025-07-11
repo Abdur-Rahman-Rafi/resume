@@ -39,6 +39,38 @@ body.dark a {
   color: #90caf9;
 }
 
+/* Headline bar (news ticker) */
+.headline-bar {
+  background: #f44336;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  font-size: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.headline-bar p {
+  display: inline-block;
+  animation: scrollText 15s linear infinite;
+}
+
+@keyframes scrollText {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Shift main layout below headline */
+nav,
+header.hero {
+  margin-top: 2.2rem;
+}
+
 /* Navigation */
 nav {
   background-color: #ffffff;
@@ -48,7 +80,7 @@ nav {
   padding: 0.5rem 2rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: sticky;
-  top: 0;
+  top: 2.2rem;
   z-index: 1000;
 }
 
@@ -79,7 +111,6 @@ nav button:hover {
   border-radius: 5px;
 }
 
-/* Theme toggle icon */
 #themeToggle {
   font-size: 1.2rem;
 }
@@ -122,7 +153,7 @@ header.hero h2 span {
   display: block;
 }
 
-/* Sections */
+/* Section layout */
 section {
   padding: 3rem 1rem;
   max-width: 1000px;
@@ -169,7 +200,7 @@ section {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Footer */
+/* Footer styles */
 footer {
   text-align: center;
   padding: 2rem;
