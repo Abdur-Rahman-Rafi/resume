@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +8,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body.dark {
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+    }
+    .sticky {
+      position: sticky;
+      top: 0;
+      background-color: #fff;
+      z-index: 999;
+    }
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: none;
+    }
+    #backToTop.show {
+      display: block;
+    }
+    .animated-heading span {
+      animation: blink 1.2s infinite;
+    }
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+  </style>
 </head>
+
 <body>
   <button id="backToTop">↑</button>
 
@@ -21,12 +58,13 @@
       <li><a href="#tools">Tools</a></li>
       <li><a href="#softskills">Soft Skills</a></li>
       <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#research">Research</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><button id="themeToggle">🌗</button></li>
     </ul>
   </nav>
 
-  <header class="hero">
+  <header class="hero animated-heading">
     <h2>Hi, I'm <span>Abdur Rahman Rafi</span></h2>
     <p>3rd Year CSE Student at United International University</p>
   </header>
@@ -124,7 +162,7 @@
 
     <section id="contact">
       <h2><i class="fas fa-envelope"></i> Contact Me</h2>
-      <form>
+      <form onsubmit="event.preventDefault(); alert('Thanks for reaching out!');">
         <input type="text" placeholder="Your Name" required />
         <input type="email" placeholder="Your Email" required />
         <textarea placeholder="Your Message" required></textarea>
@@ -145,8 +183,18 @@
   </footer>
 
   <script>
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+
     document.getElementById('backToTop').onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
     document.getElementById('themeToggle').onclick = () => document.body.classList.toggle('dark');
   </script>
 </body>
+
 </html>
